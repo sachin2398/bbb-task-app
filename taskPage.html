@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management</title>
+    <link rel="stylesheet" href="./taskPage.css">
+</head>
+
+<body>
+    <div id="head-nav">
+        <div>
+            <h2 id="task-head">Task Management</h2>
+        </div>
+    
+        <nav>
+            <ul>
+                <li><span id="user-name"></span></li>
+                <li><a href="#" id="add-task-link">Add Task</a></li>
+                <li><a href="#" id="logout-link">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+
+
+    <div id="task-list"></div>
+    <div id="add-task-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add Task</h2>
+            <input type="text" id="task-description" placeholder="Enter task description...">
+            <button id="add-task-btn" class="add-tt-btn">Add</button>
+        </div>
+    </div>
+
+    <script src="./taskPage.js"></script>
+</body>
+
+</html>
