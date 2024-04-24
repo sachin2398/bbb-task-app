@@ -321,3 +321,47 @@ nav ul li:last-child {
     background-color: #45a049;
     /* Darker green */
 }
+
+/* Add to taskPage.css */
+.edit-mode {
+    border: 2px solid #007bff;
+    padding: 20px;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.edit-mode input[type="text"],
+.edit-mode select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.edit-mode button {
+    margin-right: 8px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.edit-mode button:hover {
+    background-color: #0056b3;
+}
+
+/* Add to task.css */
+.task-item input[type="text"],
+.task-item select {
+    width: 80%;
+    padding: 8px;
+    margin-bottom: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease-in-out;
+}

@@ -156,7 +156,7 @@ async function deleteTask(taskId) {
 
 function editTask(task) {
   const taskItem = document.createElement("div");
-  taskItem.classList.add("task-item");
+  taskItem.classList.add("task-item", "edit-mode");
 
   const descriptionInput = document.createElement("input");
   descriptionInput.type = "text";
@@ -194,6 +194,7 @@ function editTask(task) {
   const existingTaskElement = document.getElementById(`task-${task._id}`);
   existingTaskElement.replaceWith(taskItem);
 }
+
 
 async function saveTask(taskId, newDescription, newStatus) {
   const token = localStorage.getItem("token");
