@@ -96,7 +96,7 @@ nav ul li a:hover {
 }
 
 .task-item button:hover {
-    background-color: #0056b3;
+    background-color: rgb(127, 241, 146);
 }
 
 .modal {

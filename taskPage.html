@@ -13,7 +13,7 @@
         <div>
             <h2 id="task-head">Task Management</h2>
         </div>
-    
+
         <nav>
             <ul>
                 <li><span id="user-name"></span></li>
@@ -23,16 +23,32 @@
         </nav>
     </div>
 
+    <div id="filter-container">
+        <label for="status-filter">Filter by Status:</label>
+        <select id="status-filter">
+            <option value="">All</option>
+            <option value="todo">To-do</option>
+            <option value="in-progress">In Progress</option>
+            <option value="done">Done</option>
+        </select>
+    </div>
 
     <div id="task-list"></div>
+
     <div id="add-task-modal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>Add Task</h2>
             <input type="text" id="task-description" placeholder="Enter task description...">
+            <select id="task-status">
+                <option value="todo">To-do</option>
+                <option value="in-progress">In Progress</option>
+                <option value="done">Done</option>
+            </select>
             <button id="add-task-btn" class="add-tt-btn">Add</button>
         </div>
     </div>
+  
 
     <script src="./taskPage.js"></script>
 </body>

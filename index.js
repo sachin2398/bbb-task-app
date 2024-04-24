@@ -27,36 +27,37 @@ const TitleDisplay = document.getElementById("head-body-main");
       email: email,
       password: password,
     };
-
+//bbd-backend-task.onrender.com
     // Make AJAX POST request for signup
-    fetch("https://task-mangement-backend-1.onrender.com/api/auth/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json(); // Parse response JSON
-        } else {
-          throw new Error("Signup failed");
-        }
-      })
-      .then((data) => {
-          // Handle successful signup
-                  
-          alert("Signup successful!");
-   
-        console.log("Signup response:", data); // Log the response data if needed
-        // Redirect to the login page or perform any other action
-        // Example: window.location.href = "/login";
-      })
-      .catch((error) => {
-        // Handle errors
-        console.error("Error:", error);
-        alert("Signup failed: " + error.message);
-      });
+   // https://bbd-backend-task.onrender.com/
+https: fetch("https://bbd-backend-task.onrender.com/api/auth/signup", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify(data),
+})
+  .then((response) => {
+    if (response.ok) {
+      return response.json(); // Parse response JSON
+    } else {
+      throw new Error("Signup failed");
+    }
+  })
+  .then((data) => {
+    // Handle successful signup
+
+    alert("Signup successful!");
+
+    console.log("Signup response:", data); // Log the response data if needed
+    // Redirect to the login page or perform any other action
+    // Example: window.location.href = "/login";
+  })
+  .catch((error) => {
+    // Handle errors
+    console.error("Error:", error);
+    alert("Signup failed: " + error.message);
+  });
   });
 
 document.getElementById("login-btn").addEventListener("click", function () {
@@ -68,7 +69,7 @@ document.getElementById("login-btn").addEventListener("click", function () {
   };
 
   // Make AJAX POST request for login
-  fetch("https://task-mangement-backend-1.onrender.com/api/auth/login", {
+  fetch("https://bbd-backend-task.onrender.com/api/auth/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -84,15 +85,15 @@ document.getElementById("login-btn").addEventListener("click", function () {
       }
     })
     .then((data) => {
-        // Store token in localStorage
-        console.log(data);
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("userId", data.user._id);
-        localStorage.setItem("userName", data.user.name);
+      // Store token in localStorage
+      console.log(data);
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("userId", data.user._id);
+      localStorage.setItem("userName", data.user.name);
       // Show alert for login success
       alert("Login successful!");
       // Redirect to the task page
-    window.location.href = "./taskPage.html";
+      window.location.href = "./taskPage.html";
     })
     .catch((error) => {
       console.error("Error:", error);
