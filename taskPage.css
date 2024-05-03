@@ -1,19 +1,18 @@
-/* task.css */
-
+/* Reset CSS */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Body Styles */
 body {
-    width: 100%;
-    height: 100%;
     font-family: Arial, sans-serif;
     background-color: #f2f2f2;
     color: #333;
 }
 
+/* Header Navigation */
 #head-nav {
     background: linear-gradient(to bottom right, #90cdf4, #a0aec0);
     display: flex;
@@ -30,6 +29,7 @@ body {
 nav ul {
     list-style: none;
     display: flex;
+    align-items: center;
 }
 
 nav ul li {
@@ -41,20 +41,15 @@ nav ul li a {
     color: #fff;
     padding: 8px 16px;
     border-radius: 5px;
-}
-
-nav ul li #signup-link {
-    background-color: #38a169;
-}
-
-nav ul li #login-link {
-    background-color: #2c7a7b;
+    transition: background-color 0.3s ease;
 }
 
 nav ul li a:hover {
     background-color: #4bbf6a;
+    /* Green on hover */
 }
 
+/* Task List */
 #task-list {
     margin: 20px;
 }
@@ -65,11 +60,6 @@ nav ul li a:hover {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin-bottom: 20px;
-}
-
-.task-number {
-    font-weight: bold;
-    font-size: 16px;
 }
 
 .task-item p {
@@ -91,14 +81,15 @@ nav ul li a:hover {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    background-color: #007bff;
-    color: white;
+    transition: background-color 0.3s ease;
 }
 
 .task-item button:hover {
-    background-color: rgb(127, 241, 146);
+    background-color: #007bff;
+    /* Blue on hover */
 }
 
+/* Modal Styles */
 .modal {
     display: none;
     position: fixed;
@@ -108,7 +99,6 @@ nav ul li a:hover {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, 0.4);
 }
 
@@ -118,57 +108,10 @@ nav ul li a:hover {
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
-}
-
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* taskPage.css */
-
-/* Task Modal */
-.modal {
-    display: none;
-    /* Hidden by default */
-    position: fixed;
-    /* Stay in place */
-    z-index: 1;
-    /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%;
-    /* Full width */
-    height: 100%;
-    /* Full height */
-    overflow: auto;
-    /* Enable scroll if needed */
-    background-color: rgba(0, 0, 0, 0.4);
-    /* Black w/ opacity */
-}
-
-/* Modal Content/Box */
-.modal-content {
-    background-color: #fefefe;
-    margin: 10% auto;
-    /* 10% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    /* Could be more or less, depending on screen size */
     border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
-/* Close Button */
 .close {
     color: #aaa;
     float: right;
@@ -193,7 +136,8 @@ nav ul li a:hover {
     box-sizing: border-box;
 }
 
-#add-task-link {
+#add-task-btn,
+#logout-link {
     background-color: #4CAF50;
     /* Green */
     color: white;
@@ -202,166 +146,28 @@ nav ul li a:hover {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-}
-#logout-link{
-    background-color: #4CAF50;
-        /* Green */
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
+    transition: background-color 0.3s ease;
 }
 
-#add-task-btn:hover {
+#add-task-btn:hover,
+#logout-link:hover {
     background-color: #45a049;
-    /* Darker green */
+    /* Darker green on hover */
 }
 
-/* Update the existing CSS with the following */
-
-/* User Name */
-#user-name {
-    color: #fff;
-    font-weight: bold;
-    padding-right: 20px;
-    /* Adjust spacing */
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    align-items: center;
-    /* Align items vertically */
-}
-
-nav ul li {
-    margin-right: 10px;
-}
-
-nav ul li:last-child {
-    margin-right: 0;
-    /* Remove margin from the last child */
-}
-
-/* // */
-
-/* taskPage.css */
-
-/* Task Modal */
-.modal {
-    display: none;
-    /* Hidden by default */
-    position: fixed;
-    /* Stay in place */
-    z-index: 1;
-    /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%;
-    /* Full width */
-    height: 100%;
-    /* Full height */
-    overflow: auto;
-    /* Enable scroll if needed */
-    background-color: rgba(0, 0, 0, 0.4);
-    /* Black w/ opacity */
-}
-
-/* Modal Content/Box */
-.modal-content {
-    background-color: #fefefe;
-    margin: 10% auto;
-    /* 10% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    /* Could be more or less, depending on screen size */
-    border-radius: 10px;
-}
-
-/* Close Button */
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
+/* Task Status Colors */
+.task-item p.status {
     font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+.task-item p.status[data-status="todo"] {
+    color: blue;
 }
 
-/* Add Task Form */
-#task-description {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
+.task-item p.status[data-status="in-progress"] {
+    color: orange;
 }
 
-#add-task-btn {
-    background-color: #4CAF50;
-    /* Green */
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-#add-task-btn:hover {
-    background-color: #45a049;
-    /* Darker green */
-}
-
-/* Add to taskPage.css */
-.edit-mode {
-    border: 2px solid #007bff;
-    padding: 20px;
-    transition: border-color 0.3s ease-in-out;
-}
-
-.edit-mode input[type="text"],
-.edit-mode select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 2px solid #007bff;
-    border-radius: 5px;
-    box-sizing: border-box;
-    transition: border-color 0.3s ease-in-out;
-}
-
-.edit-mode button {
-    margin-right: 8px;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    background-color: #007bff;
-    color: white;
-    transition: background-color 0.3s ease-in-out;
-}
-
-.edit-mode button:hover {
-    background-color: #0056b3;
-}
-
-/* Add to task.css */
-.task-item input[type="text"],
-.task-item select {
-    width: 80%;
-    padding: 8px;
-    margin-bottom: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    transition: border-color 0.3s ease-in-out;
+.task-item p.status[data-status="done"] {
+    color: green;
 }

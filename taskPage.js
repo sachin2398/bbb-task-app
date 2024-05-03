@@ -69,6 +69,8 @@ function renderTasks(tasks) {
     const status = document.createElement("p");
     status.textContent = `Status: ${task.status}`;
 
+    const deadline = document.createElement("p");
+    deadline.textContent = `Deadline: ${task.deadline}`;
     // Add conditional styling based on task status
     if (task.status === "todo") {
       status.style.color = "blue";
@@ -90,6 +92,8 @@ function renderTasks(tasks) {
 
     taskItem.appendChild(description);
     taskItem.appendChild(status);
+    taskItem.appendChild(deadline);
+
     taskItem.appendChild(editBtn);
     taskItem.appendChild(deleteBtn);
 
@@ -99,7 +103,7 @@ function renderTasks(tasks) {
 
 
 
-async function addTask(description, status) {
+async function addTask(description, status,deadline) {
   const token = localStorage.getItem("token");
   const userId = localStorage.getItem("userId");
 
@@ -112,7 +116,7 @@ async function addTask(description, status) {
           "Content-Type": "application/json",
           Authorization: token,
         },
-        body: JSON.stringify({ description, status }),
+        body: JSON.stringify({ description, status ,deadline}),
       }
     );
 
@@ -156,11 +160,15 @@ async function deleteTask(taskId) {
 
 function editTask(task) {
   const taskItem = document.createElement("div");
-  taskItem.classList.add("task-item", "edit-mode");
+  taskItem.classList.add("task-item");
 
   const descriptionInput = document.createElement("input");
   descriptionInput.type = "text";
   descriptionInput.value = task.description;
+
+  const deadlineInput = document.createElement("input");
+  deadlineInput.type = "datetime-local";
+ deadlineInput.value = task.deadline;
 
   const statusInput = document.createElement("select");
   statusInput.innerHTML = `
@@ -178,7 +186,7 @@ function editTask(task) {
   const saveBtn = document.createElement("button");
   saveBtn.textContent = "Save";
   saveBtn.addEventListener("click", () =>
-    saveTask(task._id, descriptionInput.value, statusInput.value)
+    saveTask(task._id, descriptionInput.value, statusInput.value,deadlineInput.value)
   );
 
   const cancelBtn = document.createElement("button");
@@ -187,6 +195,7 @@ function editTask(task) {
 
   taskItem.appendChild(descriptionInput);
   taskItem.appendChild(statusInput);
+  taskItem.appendChild(deadlineInput);
   taskItem.appendChild(saveBtn);
   taskItem.appendChild(cancelBtn);
 
@@ -195,10 +204,9 @@ function editTask(task) {
   existingTaskElement.replaceWith(taskItem);
 }
 
-
-async function saveTask(taskId, newDescription, newStatus) {
+async function saveTask(taskId, newDescription, newStatus,newDeadline) {
   const token = localStorage.getItem("token");
-  const updatedTask = { description: newDescription, status: newStatus };
+  const updatedTask = { description: newDescription, status: newStatus ,deadline:newDeadline};
 
   try {
     const response = await fetch(
@@ -237,15 +245,26 @@ function openAddTaskModal() {
   // Show only description input and add button
   const taskDescriptionInput = document.getElementById("task-description");
   const taskStatusInput = document.getElementById("task-status");
-
+const taskDeadline = document.getElementById("task-deadline");
   taskDescriptionInput.style.display = "block";
   taskStatusInput.style.display = "none";
 
   const addTaskButton = document.getElementById("add-task-btn");
   addTaskButton.onclick = function () {
     const taskDescription = taskDescriptionInput.value;
+    const deadline = taskDeadline.value;
+
+     const currentDateTime = new Date().toISOString().slice(0, 16);
+    
+     if (deadline < currentDateTime) {
+       alert("Deadline cannot be before the current time and date.");
+       e.preventDefault(); // Prevent form submission
+       return;
+     } 
+    
+
     if (taskDescription.trim() !== "") {
-      addTask(taskDescription, "todo"); // Set status to "todo" by default
+      addTask(taskDescription, "todo",deadline); // Set status to "todo" by default
       modal.style.display = "none";
     } else {
       alert("Please enter a task description.");
